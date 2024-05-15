@@ -1,10 +1,10 @@
     import java.util.Scanner;
-
+    //criando a classe e seus atributos
     class contaBancaria {
         public String nome;
         public String sobrenome;
         public String cpf;
-        public double saldo;
+        private double saldo;
 
         //criando o metodo construtor 
         public contaBancaria (String nome, String sobrenome, String cpf){
@@ -22,14 +22,14 @@
         // criando metodo para depositar na conta bancaria
         public void depositar(double valor){
             saldo +=valor;
-            System.out.println("depósito de R$ + "+ valor +" Realizado com sucesso!");
+            System.out.println("depósito de R$: "+ valor +" \nRealizado com sucesso!");
         }
 
         // criando metado para sacar na conta bancaria
         public void sacar(double valor){
             if (saldo >= valor){
                 saldo -= valor;
-                System.out.println("Saque de R$ "+ valor+ "Realizado com sucesso!");
+                System.out.println("Saque de R$ "+ valor+ " Realizado com sucesso!");
             } else {
 
                 System.out.println("Saldo insuficiente!");
@@ -46,6 +46,7 @@
                 System.out.println("\n 2- Realizar deposito");
                 System.out.println("\n 3- Realizar saque");
                 System.out.println("\n 4- Encerrar");
+                System.out.println("\n----------------------------");
                 System.out.println("Qual opção você quer escolher: ");
                 opcao = scanner.nextInt(); 
 
@@ -59,7 +60,7 @@
                         depositar(valorDeposito);
                         break;
                     case 3:
-                        System.out.println("Digite o valor do Saque");
+                        System.out.println("Digite o valor do Saque:");
                         double valorSaque = scanner.nextDouble();
                         sacar(valorSaque);
                         break;
@@ -76,9 +77,8 @@
             scanner.close();
         }
     }
-
+    //classe main 
     public class GerenciaBanco {
-
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
 
@@ -90,11 +90,12 @@
             System.out.println("Digite seu cpf: ");
             String cpf = scanner.nextLine();
 
+            //instanciando a classe contaBancaria
             contaBancaria conta = new contaBancaria(nome, sobrenome, cpf);
+
+            //chamando o metado 
             conta.exibirMenu();
             System.out.println("obrigado por utilizar o nosso banco");
-            scanner.close();
-            
-        }
-        
+            scanner.close();  
+        }  
     }
